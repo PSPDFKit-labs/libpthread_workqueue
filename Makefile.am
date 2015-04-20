@@ -17,8 +17,6 @@ if LINUX
 endif
     
 
-libpthread_workqueue_la_LIBADD = -lpthread -lrt
-
 libpthread_workqueue_la_CFLAGS = -I./include -I./src -Wall -Wextra -Werror -D_XOPEN_SOURCE=600 -D__EXTENSIONS__ -D_GNU_SOURCE -std=c99 -fvisibility=hidden
 
 check_PROGRAMS = test_api test_latency test_witem_cache
@@ -26,12 +24,12 @@ TESTS = test_api test_latency test_witem_cache
 
 test_api_SOURCES = testing/api/test.c ./testing/api/posix_semaphore.h
 test_api_CFLAGS = -I./include
-test_api_LDADD = libpthread_workqueue.la -lpthread -lrt
+test_api_LDADD = libpthread_workqueue.la 
 
 test_latency_SOURCES = testing/latency/latency.c ./testing/latency/latency.h
 test_latency_CFLAGS = -I./include
-test_latency_LDADD = libpthread_workqueue.la -lpthread -lrt
+test_latency_LDADD = libpthread_workqueue.la
 
 test_witem_cache_SOURCES = testing/witem_cache/test.c
 test_witem_cache_CFLAGS = -I./include
-test_witem_cache_LDADD = libpthread_workqueue.la -lpthread -lrt
+test_witem_cache_LDADD = libpthread_workqueue.la 
